@@ -11,11 +11,11 @@ model Pet {
   id String @id @default(uuid())
 
   name String
-  dono String
+  owner String
   type String
   breed String
   phone String
-  birthdate DateTime @db.Date
+  birthdate String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
