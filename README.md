@@ -1,25 +1,52 @@
+# SoftPet
 
-## SoftPet - A pet center by SoftMakers BR
+A pet center by SoftMakers BR. Made with Node, Next, PostgresSQL, Prisma &amp; 💙.
 
-###Steps to run
+<br>
 
-Install the dependency packages:
+## 📌 - Engines
 
-```bash
-npm install
-```
+Specific versions of engines, libraries, frameworks, plugins and other versioned tools.
 
-Type your environment variables based on 'env.example' file
+- **Node**: v18.15
+- **NPM**: 9.5.0
+- **PostgreSQL**: 15.2
+- **Docker**: 24.0.6
 
-Run the migrations with following command:
+<br>
 
-```bash
-npx prisma migrate dev
-```
+## ⚙️ - Install
 
-Done! You can build your project or access it with development mode running:
+- Run individual commands or run via **docker compose**
 
-```bash
-npm run dev
-```
+#### => With docker compose:
 
+- Run the command:
+
+ 	```bash
+  docker-compose up
+	```
+
+#### => With individual commands:
+
+- Create a database: (*softpet* for example)
+
+- Install dependencies:
+
+	```bash
+  npm install
+  ```
+
+- Run migrations:
+
+	```bash
+  npx prisma migrate dev
+  ```
+
+- Create your .env file from .env.example
+
+- Run database setup
+
+	```bash
+	npm run dev
+	```
