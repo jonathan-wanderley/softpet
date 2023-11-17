@@ -11,16 +11,20 @@ import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
   const searchParams = useSearchParams()
-  const { isOpenModal, setPets, page, setTotalPages } = useContext(PetContext);
+  const { isOpenModal, setPets, page, setTotalPages, setIsFetchingPets } = useContext(PetContext);
 
   useEffect(() => {
     async function fetchPets() {
+      setIsFetchingPets(true);
+      
       try {
         const petList = await getPetList(searchParams.get("search") || undefined, Number(page));
         setTotalPages(petList.pagination.totalPages)
         setPets(petList.data)
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsFetchingPets(false);
       }
     }
     

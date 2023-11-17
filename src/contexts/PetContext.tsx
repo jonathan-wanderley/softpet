@@ -23,6 +23,8 @@ type UserContextType = {
     setPage: (newState: number) => void;
     totalPages: number;
     setTotalPages: (newState: number) => void;
+    isFetchingPets: boolean;
+    setIsFetchingPets: (newState: boolean) => void;
 }
 
 const initialValue = {
@@ -30,6 +32,8 @@ const initialValue = {
     setIsOpenModal: () => {},
     actionMethod: "create",
     setActionMethod: () => {},
+    isFetchingPets: true,
+    setIsFetchingPets: () => {},
     pets: [],
     setPets: () => {},
     selectedPet: -1,
@@ -51,6 +55,7 @@ export const PetContextProvider = ({ children }: UserContextProps) => {
     const [selectedPet, setSelectedPet] = useState<string | number>(initialValue.selectedPet);
     const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
     const [totalPages, setTotalPages] = useState(initialValue.totalPages);
+    const [isFetchingPets, setIsFetchingPets] = useState(initialValue.isFetchingPets);
 
     return (
         <PetContext.Provider
@@ -60,7 +65,8 @@ export const PetContextProvider = ({ children }: UserContextProps) => {
                 pets, setPets,
                 selectedPet, setSelectedPet,
                 page, setPage,
-                totalPages, setTotalPages
+                totalPages, setTotalPages,
+                isFetchingPets, setIsFetchingPets
             }
         }>
             {children}

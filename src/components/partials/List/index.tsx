@@ -5,12 +5,20 @@ import { PetContext } from "@/contexts/PetContext";
 import { useContext } from "react";
 
 export default function List() {
-    const { pets } = useContext(PetContext);
+    const { pets, isFetchingPets } = useContext(PetContext);
 
-    if(!pets || pets?.length==0) {
+    if((!pets || pets?.length==0) && isFetchingPets==true) {
         return (
             <div className="w-full flex justify-center mt-16">
                 <DotsLoader />;
+            </div>
+        )
+    }
+
+    if((!pets || pets?.length==0) && isFetchingPets==false) {
+        return (
+            <div className="w-full flex justify-center mt-16">
+                <p className="text-[#ffffffc5]">Não há pets cadastrados...</p>
             </div>
         )
     }
