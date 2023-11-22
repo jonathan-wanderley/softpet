@@ -33,7 +33,7 @@ export default function Home() {
 
   return (
     <main
-      className='min-h-screen bg-[#00060F] pt-[50px] px-[55px]'
+      className='min-h-screen bg-[#00060F] pt-[50px] pb-[20px] px-[55px]'
       style={{ background: "linear-gradient(-45deg, #000d22 0%, #000b1c 8%, #00060F 50%, #000b1c 92%, #000d22 100%)" }}
     >
       <Header />

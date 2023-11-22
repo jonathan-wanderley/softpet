@@ -9,8 +9,8 @@ export function updatePetValidator(body: any) {
         return {
             success: false,
             error: {
-                message: "Dados inválidos",
-                errors,
+                field: errors[0].path[0],
+                message: errors[0].message,
             },
         };
     }

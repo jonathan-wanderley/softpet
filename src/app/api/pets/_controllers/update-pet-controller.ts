@@ -1,20 +1,8 @@
-import prisma from "@/lib/prisma"
-import { NextResponse } from "next/server"
-import { updatePetValidator } from "../_validators"
+import prisma from "@/lib/prisma";
+import { NextResponse } from "next/server";
+import { updatePetValidator } from "../_validators";
 
-type FindPetByIdDto = {
-    params: {
-        petId: string
-    }
-}
-
-export async function GET(_: Request, { params }: FindPetByIdDto) {
-    const foundPet = await prisma.pet.findUnique({ where: { id: params.petId } })
-
-    return NextResponse.json(foundPet);
-}
-
-export async function PUT(req: Request, { params }: FindPetByIdDto) {
+export async function updatePetController(req: Request, { params }: FindPetByIdDto) {
     const petId = params.petId;
     const body = await req.json();
 
@@ -40,10 +28,4 @@ export async function PUT(req: Request, { params }: FindPetByIdDto) {
     if(!updatedPet) return NextResponse.json({ statusCode: 404, message: "Erro ao atualizar seu pet" }, { status: 400 });
 
     return NextResponse.json(updatedPet);
-}
-
-export async function DELETE(_: Request, { params }: FindPetByIdDto) {
-    await prisma.pet.delete({ where: { id: params.petId } });
-
-    return NextResponse.json(null, { status: 200/*204*/ })
 }

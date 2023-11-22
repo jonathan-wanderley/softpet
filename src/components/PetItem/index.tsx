@@ -39,12 +39,12 @@ export default function PetItem({ petInfo }: PetItemProps) {
                 <div className="w-full flex flex-col items-start">
                     <div className="flex items-center gap-[9px] w-full">
                         <RingAndBoneICon size={17} />
-                        <span className="text-[15px] text-white font-normal w-full">{petInfo.name}</span>
+                        <span className="text-[15px] text-white font-normal w-[140px] overflow-hidden whitespace-nowrap text-ellipsis">{petInfo.name}</span>
                     </div>
 
                     <div className="flex items-center gap-[9px] w-full">
                         <ProfileIcon size={17} />
-                        <span className="text-[15px] text-white font-normal w-full">{petInfo.owner}</span>
+                        <span className="text-[15px] text-white font-normal w-[140px] overflow-hidden whitespace-nowrap text-ellipsis">{petInfo.owner}</span>
                     </div>
                 </div>
 

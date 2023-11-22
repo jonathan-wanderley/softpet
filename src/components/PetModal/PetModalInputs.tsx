@@ -15,14 +15,14 @@ export default function PetModalInputs() {
                 <div className="flex text-white items-center gap-[8px]">
                     <RingAndBoneICon />
                     <span>Nome</span>
-                    
                 </div>
                 
                 <ThemeInput
-                    disabled={method==="remove"}
                     {...register("name")}
+                    disabled={method==="remove"}
+                    maxLength={30}
                 />
-                {errors.name?.type && <span className="text-[11px] text-[#ae1717]">nome inválido*</span>}
+                {errors.name?.type && <span className="text-[11px] text-[#ae1717]">Nome inválido*</span>}
             </div>
 
             <div className="flex flex-col gap-[2px]">
@@ -65,7 +65,7 @@ export default function PetModalInputs() {
                     </div>
                 </div>
                 
-                {errors.type?.message && <span className="text-[11px] text-[#ae1717]">tipo inválido*</span>}
+                {errors.type?.message && <span className="text-[11px] text-[#ae1717]">Tipo inválido*</span>}
             </div>
 
             <div className="flex flex-col gap-[2px]">
@@ -75,11 +75,12 @@ export default function PetModalInputs() {
                 </div>
                 
                 <ThemeInput
-                    disabled={method==="remove"}
                     {...register("owner")}
+                    disabled={method==="remove"}
+                    maxLength={30}
                 />
 
-                {errors.owner?.message && <span className="text-[11px] text-[#ae1717]">nome inválido*</span>}
+                {errors.owner?.message && <span className="text-[11px] text-[#ae1717]">Nome inválido*</span>}
             </div>
 
             <div className="flex flex-col gap-[2px]">
@@ -88,9 +89,13 @@ export default function PetModalInputs() {
                     <span>Raça</span>
                 </div>
                 
-                <ThemeInput {...register("breed")} disabled={method==="remove"} />
+                <ThemeInput
+                    {...register("breed")}
+                    disabled={method==="remove"}
+                    maxLength={30}
+                />
 
-                {errors.breed?.message && <span className="text-[11px] text-[#ae1717]">raça inválida*</span>}
+                {errors.breed?.message && <span className="text-[11px] text-[#ae1717]">Raça inválida*</span>}
             </div>
 
             <div className="flex flex-col gap-[2px]">
@@ -99,9 +104,13 @@ export default function PetModalInputs() {
                     <span>Telefone</span>
                 </div>
                 
-                <ThemeInput {...register("phone")} maxLength={11} disabled={method==="remove"} />
+                <ThemeInput
+                    {...register("phone")}
+                    disabled={method==="remove"}
+                    maxLength={11}
+                />
 
-                {errors.phone?.message && <span className="text-[11px] text-[#ae1717]">telefone inválido*</span>}
+                {errors.phone?.message && <span className="text-[11px] text-[#ae1717]">Telefone inválido*</span>}
             </div>
 
             <div className="flex flex-col gap-[2px]">
@@ -113,7 +122,7 @@ export default function PetModalInputs() {
                 
                 <ThemeInput type="date" lang="pt-br" {...register("birthdate")} disabled={method==="remove"} />
 
-                {errors.birthdate?.message && <span className="text-[11px] text-[#ae1717]">nascimento inválido*</span>}
+                {errors.birthdate?.message && <span className="text-[11px] text-[#ae1717]">Nascimento inválido*</span>}
             </div>
         </div>
     )

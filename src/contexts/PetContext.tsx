@@ -1,8 +1,6 @@
 'use client'
 
-import { IPetForm } from "@/lib/interfaces/IPetForm";
 import { PetType } from "@/lib/schemas";
-import api from "@/lib/services/api";
 import { useSearchParams } from "next/navigation";
 import { ReactNode, createContext, useState } from "react";
 
