@@ -4,6 +4,7 @@ import './globals.css'
 import { PetContextProvider } from '@/contexts/PetContext';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Toaster } from 'react-hot-toast';
 
 const ubuntu = Ubuntu({ weight: ['300', '400', '500', '700'], subsets: ['latin'] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
           {children}
         </PetContextProvider>
 
-        <ToastContainer />
+        <div><Toaster/></div>
       </body>
     </html>
   )

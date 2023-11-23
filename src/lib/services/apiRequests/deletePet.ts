@@ -1,20 +1,31 @@
 import { IPetForm } from "@/lib/interfaces/IPetForm";
 import api from "../api";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
 
 export async function deletePet(data: IPetForm) {
-    try {
-        await api.delete(`/pets/${data.id}`);
-    
-        toast.info("Pet removido com sucesso!", {
-            theme: "dark",
-        });
-        toast.onChange(() => window.location.reload());
-    } catch (error) {
-        console.error(error);
-        toast.error("Algo saiu errado, tente novamente!", {
-            theme: "dark",
-        });
-        toast.onChange(() => window.location.reload());
+  async function deletePet(data: IPetForm) {
+    return await api.delete(`/pets/${data.id}`);
+  }
+
+  toast.promise(
+    deletePet(data),
+    {
+      loading: 'Removendo pet...',
+      success: () => {
+        window.location.href = "/";
+        return 'Pet removido com sucesso!'
+      },
+      error: () => {
+        window.location.href = "/";
+        return 'Algo saiu errado durante a remoção.'
+      },
+    },
+    {
+      style: {
+        borderRadius: '10px',
+        background: '#00173B',
+        color: '#fff',
+      }
     }
+  );
 }
