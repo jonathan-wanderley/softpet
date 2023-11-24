@@ -1,0 +1,263 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: SoftPet
+  description: A pet center by SoftMakers BR
+  contact:
+    name: SoftPet
+    email: contact@mail.com
+    url: http://localhost:3000/
+  license:
+    name: MIT
+    url: https://github.com/jonathan-wanderley/softpet
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /pets:
+    get:
+      tags:
+        - PET
+      summary: Returns all registered pets
+      description: Returns all registered pets
+      operationId: findPets
+      responses:
+        '200':
+          description: Get all pets response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+    post:
+      tags:
+        - PET
+      summary: Register a new pet in SoftPet
+      description: Register a new pet in SoftPet
+      operationId: addPet
+      requestBody:
+        description: Pet to add to the SoftPet
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewPetForm'
+      responses:
+        '201':
+          description: Pet registered sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Bad request, check sent data. The returned json only show the first field with error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+  /pets/{id}:
+    get:
+      tags:
+        - PET
+      summary: Returns a pet by unique ID
+      description: Returns a pet by unique ID
+      operationId: findOnePet
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to fetch
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Response with a found pet data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '404':
+          description: If the pet is not found returns a not found message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFoundError'
+    put:
+      tags:
+        - PET
+      summary: Update a pet in SoftPet
+      description: Update a pet in SoftPet
+      operationId: updatePet
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to fetch
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        description: Pet to add to the SoftPet
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditPetForm'
+      responses:
+        '200':
+          description: Pet updated sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '400':
+          description: Bad request, check sent data. The returned json only show the first field with error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequestError'
+    delete:
+      tags:
+        - PET
+      summary: Deletes a single pet by id
+      description: Deletes a single pet by id
+      operationId: deletePet
+      parameters:
+        - name: id
+          in: path
+          description: ID of pet to delete
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Pet deleted successfully
+components:
+  schemas:
+    Pet:
+      allOf:
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: string
+              format: uuid
+            name:
+              type: string
+              pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+              example: 'Teddy'
+            owner:
+              type: string
+              pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+              example: 'Christian Silva dos Anjos'
+            type:
+              type: string
+              enum: [gato, cachorro]
+            breed:
+              type: string
+              pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+              example: 'pitbull'
+            phone:
+              type: string
+              minLength: 10
+              maxLength: 11
+              pattern: '^[1-9]{2}(?:[2-8]|9[0-9])[0-9]{3}[0-9]{4}$'
+            birthdate:
+              type: string
+              pattern: '^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$'
+            created_at:
+              type: string
+              format: date
+            updated_at:
+              type: string
+              format: date
+    NewPetForm:
+      type: object
+      required:
+        - name
+        - owner
+        - type
+        - breed
+        - phone
+        - birthdate
+      properties:
+        name:
+          type: string
+          pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+          example: 'Teddy'
+        owner:
+          type: string
+          pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+          example: 'Christian Silva dos Anjos'
+        type:
+          type: string
+          enum: [gato, cachorro]
+        breed:
+          type: string
+          pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+          example: 'pitbull'
+        phone:
+          type: string
+          minLength: 10
+          maxLength: 11
+          pattern: '^[1-9]{2}(?:[2-8]|9[0-9])[0-9]{3}[0-9]{4}$'
+        birthdate:
+          type: string
+          pattern: '^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$'
+    EditPetForm:
+      type: object
+      properties:
+        name:
+          type: string
+          pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+          example: 'Teddy'
+        owner:
+          type: string
+          pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+          example: 'Christian Silva dos Anjos'
+        type:
+          type: string
+          enum: [gato, cachorro]
+        breed:
+          type: string
+          pattern: '^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]+$'
+          example: 'pitbull'
+        phone:
+          type: string
+          minLength: 10
+          maxLength: 11
+          pattern: '^[1-9]{2}(?:[2-8]|9[0-9])[0-9]{3}[0-9]{4}$'
+        birthdate:
+          type: string
+          pattern: '^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$'
+    EmptyJson:
+      type: object
+    BadRequestError:
+      type: object
+      required:
+        - message
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: object
+          properties:
+            field:
+              type: string
+              example: 'birthdate'
+            message:
+              type: string
+              example: 'Invalid birthdate format, the valid format is yyyy-mm-dd'
+    NotFoundError:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: 'Pet not found. Check pet id'
+          
