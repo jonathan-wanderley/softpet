@@ -1,23 +1,23 @@
-import { IPetForm } from "@/lib/interfaces/IPetForm";
+import { IPetForm } from "@/lib/interfaces/pet-form";
 import api from "../api";
 import toast from "react-hot-toast";
 
-export async function deletePet(data: IPetForm) {
-  async function deletePet(data: IPetForm) {
-    return await api.delete(`/pets/${data.id}`);
+export async function registerPet(data: IPetForm) {
+  async function registerPet(data: IPetForm) {
+    return await api.post('/pets', data);
   }
 
   toast.promise(
-    deletePet(data),
+    registerPet(data),
     {
-      loading: 'Removendo pet...',
+      loading: 'Cadastrando pet...',
       success: () => {
         window.location.href = "/";
-        return 'Pet removido com sucesso!'
+        return 'Pet cadastrado com sucesso!'
       },
       error: () => {
         window.location.href = "/";
-        return 'Algo saiu errado durante a remoção.'
+        return 'Algo saiu errado durante o cadastro.'
       },
     },
     {

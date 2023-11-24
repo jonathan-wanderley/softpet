@@ -1,12 +1,12 @@
 'use client'
 
-import Nav from '@/components/partials/Nav';
-import PetModal from '@/components/PetModal';
-import { getPetList } from '@/lib/services/apiRequests';
+import Nav from '@/components/partials/nav';
+import PetModal from '@/components/pet-modal';
+import { getPetList } from '@/lib/services/api-requests';
 import { useContext, useEffect } from 'react';
-import Header from '@/components/partials/Header';
-import List from '@/components/partials/List';
-import { PetContext } from '@/contexts/PetContext';
+import Header from '@/components/partials/header';
+import List from '@/components/partials/list';
+import { PetContext } from '@/contexts/pet-context';
 import { useSearchParams } from 'next/navigation';
 
 export default function Home() {

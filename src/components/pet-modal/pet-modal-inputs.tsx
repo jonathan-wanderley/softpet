@@ -1,9 +1,9 @@
 import { useFormContext } from "react-hook-form";
 import { CalendarIcon, DnaIcon, PhoneIcon, ProfileIcon, RingAndBoneICon } from "../icons";
-import ThemeInput from "../Input";
+import ThemeInput from "../input";
 import { useContext, useEffect } from "react";
-import { PetContext } from "@/contexts/PetContext";
-import { IPetForm } from "@/lib/interfaces/IPetForm";
+import { PetContext } from "@/contexts/pet-context";
+import { IPetForm } from "@/lib/interfaces/pet-form";
 
 export default function PetModalInputs() {
   const { actionMethod: method } = useContext(PetContext);

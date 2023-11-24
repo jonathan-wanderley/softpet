@@ -2,9 +2,9 @@
 
 import { ChevronDownIcon, ProfileIcon, RingAndBoneICon, RoundedCatIcon, RoundedDogIcon } from "@/components/icons";
 import { useContext } from "react";
-import PetDropdown from "../PetDropdown";
+import PetDropdown from "../pet-dropdown";
 import { PetType } from "@/lib/schemas";
-import { PetContext } from "@/contexts/PetContext";
+import { PetContext } from "@/contexts/pet-context";
 
 type PetItemProps = {
     petInfo: PetType;

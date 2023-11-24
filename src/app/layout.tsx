@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Ubuntu } from 'next/font/google'
 import './globals.css'
-import { PetContextProvider } from '@/contexts/PetContext';
+import { PetContextProvider } from '@/contexts/pet-context';
 import { Toaster } from 'react-hot-toast';
 
 const ubuntu = Ubuntu({ weight: ['300', '400', '500', '700'], subsets: ['latin'] });

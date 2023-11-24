@@ -1,9 +1,9 @@
 import { useContext, useEffect } from "react"
-import ButtonShape from "../ButtonShape";
+import ButtonShape from "../button-shape";
 import { LeftArrowWithCircleIcon, PlusWithCircleIcon, SketchingPencilIcon, TrashIcon } from "../icons";
-import { PetContext } from "@/contexts/PetContext";
+import { PetContext } from "@/contexts/pet-context";
 import { useFormContext } from "react-hook-form";
-import DotsLoader from "../DotsLoader";
+import DotsLoader from "../dots-loader";
 
 export default function PetModalButtons() {
     const { actionMethod, setIsOpenModal } = useContext(PetContext)

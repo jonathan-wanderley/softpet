@@ -1,5 +1,5 @@
 import { LeftArrowWithCircleIcon, RightArrowWithCircleIcon } from "@/components/icons";
-import { PetContext } from "@/contexts/PetContext";
+import { PetContext } from "@/contexts/pet-context";
 import { useSearchParams } from "next/navigation";
 import { useContext } from "react";
 

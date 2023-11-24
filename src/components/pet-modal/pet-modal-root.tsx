@@ -3,14 +3,13 @@ import { CloseIcon } from "../icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { PetType, petSchema } from "@/lib/schemas";
 import { FormProvider, useForm } from "react-hook-form";
-import PetModalHeader from "./ModalHeader";
-import PetModalInputs from "./PetModalInputs";
-import PetModalButtons from "./PetModalButtons";
-import { PetContext } from "@/contexts/PetContext";
-import { registerPet, updatePet } from "@/lib/services/apiRequests";
-import { deletePet } from "@/lib/services/apiRequests/deletePet";
-import { IPetForm } from "@/lib/interfaces/IPetForm";
-import { toast } from "react-toastify";
+import PetModalHeader from "./pet-modal-header";
+import PetModalInputs from "./pet-modal-inputs";
+import PetModalButtons from "./pet-modal-buttons";
+import { PetContext } from "@/contexts/pet-context";
+import { registerPet, updatePet } from "@/lib/services/api-requests";
+import { deletePet } from "@/lib/services/api-requests/delete-pet";
+import { IPetForm } from "@/lib/interfaces/pet-form";
 
 export default function PetModal() {
     const { setIsOpenModal, actionMethod, selectedPet, pets } = useContext(PetContext);

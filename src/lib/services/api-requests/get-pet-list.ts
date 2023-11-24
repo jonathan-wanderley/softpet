@@ -1,4 +1,4 @@
-import { GetPetListResponse } from "@/lib/interfaces/api/GetPetListResponse";
+import { GetPetListResponse } from "@/lib/interfaces/api/get-pet-list-response";
 import api from "../api";
 
 type FilterString = string;

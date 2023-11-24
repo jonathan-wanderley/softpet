@@ -1,6 +1,6 @@
 import { ElementType, ReactNode, useContext } from "react";
 import { PlusWithCircleIcon, SketchingPencilIcon, TrashIcon } from "../icons";
-import { PetContext } from "@/contexts/PetContext";
+import { PetContext } from "@/contexts/pet-context";
 
 export default function PetModalHeader() {
     const { actionMethod: method } = useContext(PetContext);

@@ -1,9 +1,9 @@
 import { CalendarIcon, DnaIcon, PhoneIcon, SketchingPencilGradientIcon, SketchingPencilIcon, TrashIcon } from "../icons";
-import ButtonShape from "../ButtonShape";
+import ButtonShape from "../button-shape";
 import { format } from "date-fns";
 import { PetType } from "@/lib/schemas";
 import { useContext } from "react";
-import { PetContext } from "@/contexts/PetContext";
+import { PetContext } from "@/contexts/pet-context";
 
 type PetDropdown = {
   className?: string;

@@ -1,7 +1,7 @@
-import DotsLoader from "@/components/DotsLoader";
-import Pagination from "@/components/Pagination";
-import PetItem from "@/components/PetItem";
-import { PetContext } from "@/contexts/PetContext";
+import DotsLoader from "@/components/dots-loader";
+import Pagination from "@/components/pagination";
+import PetItem from "@/components/pet-item";
+import { PetContext } from "@/contexts/pet-context";
 import { useContext } from "react";
 
 export default function List() {

@@ -1,4 +1,4 @@
-import { IPetForm } from "@/lib/interfaces/IPetForm";
+import { IPetForm } from "@/lib/interfaces/pet-form";
 import api from "../api";
 import toast from "react-hot-toast";
 
